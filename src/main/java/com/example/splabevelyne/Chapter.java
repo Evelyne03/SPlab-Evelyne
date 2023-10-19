@@ -17,6 +17,7 @@ public class Chapter {
     }
 
     public void print(){
+
         System.out.println("Chapter name: " + name);
     }
 
@@ -30,4 +31,5 @@ public class Chapter {
     public Subchapter getSubchapter(int index){
         return subchapterList.get(index - 1);
     }
+
 }
