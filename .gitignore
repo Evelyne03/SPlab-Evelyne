@@ -5,6 +5,7 @@
 #/.gitignore
 
 HELP.md
+.git
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
