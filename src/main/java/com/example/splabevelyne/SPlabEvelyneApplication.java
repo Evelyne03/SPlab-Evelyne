@@ -1,12 +1,11 @@
 package com.example.splabevelyne;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.SpringApplication;
 
 
 public class SPlabEvelyneApplication {
     public static void main(String[] args) {
-        //SpringApplication.run(SPlabEvelyneApplication.class, args);
         Book noapteBuna = new Book("Noapte buna, copii!");
         Author rpGheo = new Author("Radu Pavel Gheo");
         noapteBuna.addAuthor(rpGheo);

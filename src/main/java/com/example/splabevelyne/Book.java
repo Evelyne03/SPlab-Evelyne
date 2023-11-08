@@ -32,8 +32,8 @@ public class Book{
         }
 
         public void print(){
-            System.out.println("Book title: " + title);
-            System.out.println("Authors: ");
+            System.out.println("Book " + title);
+            System.out.println("\n\nAuthors: ");
             for(Author a: authors)
                 a.print();
             System.out.println();

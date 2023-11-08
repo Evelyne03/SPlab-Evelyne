@@ -1,11 +1,11 @@
 package com.example.splabevelyne;
 
-public class Image implements Element{
-    private String imagename;
-    Image(String imagename){
-        this.imagename = imagename;
-    }
+import com.sun.scenario.animation.shared.TimerReceiver;
 
+import java.util.concurrent.TimeUnit;
+
+public class Image implements Element{
+    public String imagename;
     @Override
     public void print(){
         System.out.println("Image with name: " + imagename);
