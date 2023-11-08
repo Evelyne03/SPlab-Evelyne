@@ -1,28 +1,47 @@
 package com.example.splabevelyne;
 
-import com.sun.scenario.animation.shared.TimerReceiver;
-
 import java.util.concurrent.TimeUnit;
 
-public class Image implements Element{
-    public String imagename;
-    @Override
-    public void print(){
-        System.out.println("Image with name: " + imagename);
+public class Image implements Element {
+    private String name;
+    private String url;
+
+    Image(String url, String name) {
+        this.url = url;
+        this.name = name;
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    @Override
-    public void add(Element e){
-        throw new UnsupportedOperationException();
-    }
+        Image(String url) {
+            this.url = url;
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
-    @Override
-    public void removeElement(Element e){
-        throw new UnsupportedOperationException();
-    }
+        @Override
+        public void print() {
+            System.out.println("Image with url: " + url);
+        }
 
-    @Override
-    public Element get(int i){
-        throw new UnsupportedOperationException();
+        @Override
+        public void add(Element e){
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public void removeElement(Element e){
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public Element get(int i){
+            throw new UnsupportedOperationException();
+        }
     }
-}
