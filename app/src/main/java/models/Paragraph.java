@@ -1,4 +1,7 @@
-package splab.evelyne;
+package models;
+
+import services.AlignLeft;
+import services.AlignStrategy;
 
 public class Paragraph implements Element{
     private String name;

@@ -1,4 +1,4 @@
-package splab.evelyne;
+package models;
 
 public class Author {
     String name;

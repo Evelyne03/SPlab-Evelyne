@@ -1,4 +1,4 @@
-package splab.evelyne;
+package models;
 
 import java.awt.*;
 public interface Picture {

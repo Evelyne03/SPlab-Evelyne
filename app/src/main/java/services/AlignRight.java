@@ -1,4 +1,4 @@
-package splab.evelyne;
+package services;
 
 public class AlignRight implements AlignStrategy{
     @Override
