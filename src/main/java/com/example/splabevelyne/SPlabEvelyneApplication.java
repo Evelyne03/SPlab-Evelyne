@@ -5,7 +5,6 @@ package com.example.splabevelyne;
 
 
 public class SPlabEvelyneApplication {
-    public class SabloaneLabApplication {
 
         public static void main(String[] args) {
             //SpringApplication.run(SabloaneLabApplication.class, args);
@@ -58,5 +57,3 @@ public class SPlabEvelyneApplication {
 
         }
     }
-
-}
