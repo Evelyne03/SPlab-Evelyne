@@ -1,4 +1,4 @@
-package com.example.splabevelyne;
+package splab.evelyne;
 
 import java.util.ArrayList;
 import java.util.List;

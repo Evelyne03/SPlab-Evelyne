@@ -1,19 +1,13 @@
-package com.example.splabevelyne;
+package splab.evelyne;
 
-public class Paragraph implements Element{
+public class Table implements Element{
     private String name;
-    private AlignStrategy align;
-    public Paragraph(String name){
+    public Table(String name){
         this.name = name;
-        align = new AlignLeft();
     }
 
-@Override
     public void print(){
-        if(align == null)
-            System.out.println("Paragraph: " + name);
-        else
-            align.render(name);
+        System.out.println("Table name: " + name);
     }
 
     @Override
@@ -29,9 +23,5 @@ public class Paragraph implements Element{
     @Override
     public Element get(int i){
         throw new UnsupportedOperationException();
-    }
-
-    public void setAlignStrategy(AlignStrategy align){
-        this.align = align;
     }
 }

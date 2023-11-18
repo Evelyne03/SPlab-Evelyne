@@ -1,4 +1,4 @@
-package com.example.splabevelyne;
+package splab.evelyne;
 
 import java.util.concurrent.TimeUnit;
 

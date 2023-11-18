@@ -1,4 +1,4 @@
-package com.example.splabevelyne;
+package splab.evelyne;
 
 public class TableOfContents implements Element{
     public void print(){
