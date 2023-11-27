@@ -50,6 +50,18 @@ public class Book{
                 sections= new ArrayList<Element>();
             sections.add(paragraph);
         }
+
+        public String getTitle(){
+            return title;
+        }
+
+        public Iterable<? extends Author> getAuthors(){
+            return authors;
+        }
+
+        public List<Element> getSections(){
+            return sections;
+        }
 }
 
 

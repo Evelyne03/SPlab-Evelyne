@@ -40,4 +40,8 @@ public class Subchapter {
             System.out.println('\n');
         }
     }
+
+    public String getTitle(){
+        return name;
+    }
 }

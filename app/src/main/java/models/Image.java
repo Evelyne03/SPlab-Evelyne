@@ -6,7 +6,7 @@ public class Image implements Element {
     private String name;
     private String url;
 
-    Image(String url, String name) {
+    public Image(String url, String name) {
         this.url = url;
         this.name = name;
         try {
@@ -16,7 +16,7 @@ public class Image implements Element {
         }
     }
 
-        Image(String url) {
+        public Image(String url) {
             this.url = url;
             try {
                 TimeUnit.SECONDS.sleep(5);
@@ -43,5 +43,14 @@ public class Image implements Element {
         @Override
         public Element get(int i){
             throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public void accept(Visitor visitor){
+        visitor.visitImage(this);
+        }
+
+        public String getImageName(){
+        return name;
         }
     }

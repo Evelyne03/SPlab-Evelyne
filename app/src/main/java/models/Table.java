@@ -24,4 +24,13 @@ public class Table implements Element{
     public Element get(int i){
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public void accept(Visitor visitor){
+        visitor.visitTable(this);
+    }
+
+    public String getTitle(){
+        return name;
+    }
 }

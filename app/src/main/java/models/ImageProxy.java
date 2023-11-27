@@ -7,13 +7,13 @@ public class ImageProxy implements Picture, Element {
     Dimension dim;
     Image realImage;
 
-    ImageProxy(String url, Dimension dim, Image realImage){
+    public ImageProxy(String url, Dimension dim, Image realImage){
         this.url = url;
         this.dim = dim;
         this.realImage = realImage;
     }
 
-    ImageProxy(String url){
+    public ImageProxy(String url){
         this.url = url;
         dim = null;
         realImage = null;
@@ -34,7 +34,7 @@ public class ImageProxy implements Picture, Element {
         return null;
     }
 
-    private Image loadImage(){
+    public Image loadImage(){
         if(realImage == null){
             realImage = new Image(url);
         }
@@ -59,5 +59,10 @@ public class ImageProxy implements Picture, Element {
     @Override
     public Element get(int i){
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor){
+        visitor.visitImageProxy(this);
     }
 }

@@ -31,4 +31,19 @@ public class Section implements Element{
     public Element get(int i){
         return children.get(i);
     }
+
+    @Override
+    public void accept(Visitor visitor){
+        visitor.visitSection(this);
+        for(Element element: this.children)
+            element.accept(visitor);
+    }
+
+    public String getName(){
+        return title;
+    }
+
+    public Iterable<? extends Element> getContent(){
+        return children;
+    }
 }
