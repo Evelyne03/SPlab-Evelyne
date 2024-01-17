@@ -1,18 +1,21 @@
-package uvt;
+package uvt.commands;
 
 import uvt.services.BooksService;
 
-public class GetBooksByName implements Command{
+public class DeleteBookCommand implements Command{
     private final BooksService booksService;
     private String bookName;
-    public GetBooksByName(BooksService booksService) {
+
+    public DeleteBookCommand(BooksService booksService) {
         this.booksService = booksService;
     }
+
     public void setBookName(String bookName) {
         this.bookName = bookName;
     }
+
     @Override
     public void execute() {
-        booksService.getBookByName(bookName);
+        booksService.deleteBook(booksService.getBookByName(bookName));
     }
 }

@@ -1,4 +1,4 @@
-package uvt;
+package uvt.commands;
 
 import uvt.services.BooksService;
 import uvt.models.Book;

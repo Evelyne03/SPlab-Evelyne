@@ -2,15 +2,25 @@ package uvt.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.*;
 
+@Entity
 public class Subchapter {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subchapter")
     private List<Element> elements;
+    @ManyToOne
+    @JoinColumn(name = "chapter_id")
+    private Chapter chapter;
     Subchapter(String name, List<Element> elements){
         this.name = name;
         elements = null;
     }
-
+    public Subchapter() {
+    }
     public Subchapter(String title) {
     }
 

@@ -1,11 +1,14 @@
 package uvt.models;
 
 import java.awt.*;
+import jakarta.persistence.*;
 
-public class ImageProxy implements Picture, Element {
+public class ImageProxy extends Element implements Picture{
     String url;
     Dimension dim;
-    uvt.models.Image realImage;
+    Image realImage;
+    public ImageProxy() {
+    }
 
     public ImageProxy(String url, Dimension dim, uvt.models.Image realImage){
         this.url = url;
@@ -34,7 +37,7 @@ public class ImageProxy implements Picture, Element {
         return null;
     }
 
-    public uvt.models.Image loadImage(){
+    public Image loadImage(){
         if(realImage == null){
             realImage = new Image(url);
         }

@@ -1,11 +1,15 @@
 package uvt.models;
 
 import java.util.concurrent.TimeUnit;
+import jakarta.persistence.*;
 
-public class Image implements Element {
+@Entity
+public class Image extends Element {
+    @Column(name = "url")
     private String name;
     private String url;
-
+    public Image() {
+    }
     public Image(String url, String name) {
         this.url = url;
         this.name = name;
@@ -18,11 +22,6 @@ public class Image implements Element {
 
         public Image(String url) {
             this.url = url;
-            try {
-                TimeUnit.SECONDS.sleep(5);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
 
         @Override
@@ -52,5 +51,9 @@ public class Image implements Element {
 
         public String getImageName(){
         return name;
+        }
+
+        public void setImageName(String name){
+        this.name = name;
         }
     }

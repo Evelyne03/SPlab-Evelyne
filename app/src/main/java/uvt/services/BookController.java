@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import uvt.*;
 import uvt.models.*;
 import uvt.commands.*;
 
@@ -60,7 +59,7 @@ public class BookController {
 
     @GetMapping("/get/{name}")
     public ResponseEntity<?>getBook(@PathVariable String name){
-        GetBooksByName getBookByNameCommand = new GetBooksByName(booksService);
+        GetBooksByNameCommand getBookByNameCommand = new GetBooksByNameCommand(booksService);
         getBookByNameCommand.setBookName(name);
         getBookByNameCommand.execute();
         return new ResponseEntity<>("", HttpStatus.OK);
