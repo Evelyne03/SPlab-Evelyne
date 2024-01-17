@@ -14,6 +14,16 @@ dependencies {
     implementation 'com.google.guava:guava:32.1.1-jre'
     implementation 'org.springframework.boot:spring-boot-starter-web:3.1.5'
 
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
+    // Spring AOP Dependency
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.aspectj:aspectjrt:1.9.7'
+
+// AspectJ Dependency
+    implementation 'org.aspectj:aspectjrt:1.9.6'
+
+
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
