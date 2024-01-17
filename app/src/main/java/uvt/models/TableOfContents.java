@@ -2,8 +2,10 @@ package uvt.models;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import lombok.Data;
 
-public class TableOfContents extends Element{
+@Data
+public class TableOfContents extends BaseElement implements Element{
     private Map<String, Integer> entries = new LinkedHashMap<>();
     public void print(){
         System.out.println("Sample");

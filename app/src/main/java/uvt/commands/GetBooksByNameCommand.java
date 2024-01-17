@@ -1,8 +1,12 @@
 package uvt.commands;
 
+import org.springframework.stereotype.Component;
 import uvt.services.BooksService;
+import uvt.models.Book;
+import java.util.Optional;
 
-public class GetBooksByNameCommand implements Command{
+@Component
+public class GetBooksByNameCommand implements Command<Optional<Book>>{
     private final BooksService booksService;
     private String bookName;
     public GetBooksByNameCommand(BooksService booksService) {
@@ -12,7 +16,7 @@ public class GetBooksByNameCommand implements Command{
         this.bookName = bookName;
     }
     @Override
-    public void execute() {
-        booksService.getBookByName(bookName);
+    public Optional<Book> execute() {
+        return Optional.ofNullable(booksService.getBooksByName(bookName));
     }
 }

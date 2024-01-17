@@ -2,20 +2,19 @@ package uvt.commands;
 
 import uvt.services.BooksService;
 import uvt.models.Book;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public class GetAllBooksCommand implements Command{
+@Component
+public class GetAllBooksCommand implements Command<List<Book>>{
     private final BooksService booksService;
     public GetAllBooksCommand(BooksService booksService) {
         this.booksService = booksService;
     }
     @Override
-    public void execute() {
-        booksService.getAllBooks();
-        List<Book> books = booksService.getAllBooks();
-        for(Book book: books){
-            System.out.println(book.getTitle());
-        }
+    public List<Book> execute() {
+        return booksService.getAllBooks();
     }
+
 }

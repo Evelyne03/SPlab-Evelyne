@@ -1,19 +1,12 @@
-package uvt.evelyne;
+package uvt;
 
-import uvt.models.Book;
-import uvt.models.Element;
-import uvt.models.Paragraph;
-import uvt.models.Section;
-import uvt.services.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-import java.util.List;
-
 @SpringBootApplication
-@ComponentScan(basePackages = {"uvt.models", "uvt.services"})
+@ComponentScan(basePackages = {"uvt.models", "uvt.services", "uvt.commands", "uvt.repos", "uvt.evelyne"})
 public class SPlabEvelyneApplication {
 
     public static void main(String[] args) {

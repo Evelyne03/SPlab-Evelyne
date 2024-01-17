@@ -1,10 +1,17 @@
 package uvt.commands;
 
 import uvt.services.BooksService;
+import org.springframework.stereotype.Component;
+import uvt.models.Book;
 
-public class DeleteBookCommand implements Command{
+import java.util.concurrent.CompletableFuture;
+
+@Component
+public class DeleteBookCommand implements Command<Void>{
     private final BooksService booksService;
+    private Integer id;
     private String bookName;
+    private Book Book;
 
     public DeleteBookCommand(BooksService booksService) {
         this.booksService = booksService;
@@ -15,7 +22,13 @@ public class DeleteBookCommand implements Command{
     }
 
     @Override
-    public void execute() {
-        booksService.deleteBook(booksService.getBookByName(bookName));
+    public Void execute() {
+        booksService.deleteBook(id);
+        return null;
+    }
+
+    public void setId(Integer id){
+        this.id=id;
+
     }
 }

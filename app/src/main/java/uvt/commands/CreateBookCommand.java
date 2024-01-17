@@ -2,10 +2,16 @@ package uvt.commands;
 
 import uvt.models.Book;
 import uvt.services.BooksService;
+import jakarta.persistence.Column;
+import org.springframework.stereotype.Component;
+import uvt.models.Author;
+import java.util.concurrent.CompletableFuture;
 
-public class CreateBookCommand implements Command{
+@Component
+public class CreateBookCommand implements Command<CompletableFuture<Book>>{
     private final BooksService booksService;
     private Book book;
+    private Author author;
 
     public CreateBookCommand(BooksService booksService) {
         this.booksService = booksService;
@@ -16,7 +22,7 @@ public class CreateBookCommand implements Command{
     }
 
     @Override
-    public void execute() {
-        booksService.addBook(book);
+    public CompletableFuture<Book> execute() {
+        return booksService.addBook(book);
     }
 }

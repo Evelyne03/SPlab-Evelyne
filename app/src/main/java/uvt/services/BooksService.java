@@ -2,6 +2,12 @@ package uvt.services;
 
 import org.springframework.stereotype.Service;
 import uvt.models.Book;
+import org.springframework.beans.factory.annotation.Autowired;
+import uvt.repos.BooksRepository;
+import uvt.repos.SectionsRepository;
+import uvt.repos.AuthorsRepository;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +15,18 @@ import java.util.List;
 @Service
 public class BooksService {
     private List<Book> books = new ArrayList<>();
+    private final BooksRepository bookRepository;
+    private final AuthorsRepository authorRepository;
+
+    @Autowired
+    public BooksService(BooksRepository booksRepository , AuthorsRepository authorsRepository ) {
+        this.bookRepository = booksRepository;
+        this.authorRepository = authorsRepository;
+
+    }
 
     public List<Book> getAllBooks() {
-        return books;
+        return bookRepository.findAll();
     }
 
     public Book getBooksByName(String name) {
@@ -21,24 +36,22 @@ public class BooksService {
                 .orElse(null);
     }
 
-    public void addBook(Book book) {
-        books.add(book);
+    public CompletableFuture<Book> addBook(Book book) {
+        Book createdBook = bookRepository.save(book);
+        return CompletableFuture.completedFuture(createdBook);
     }
 
-    public void deleteBook(Book book) {
-        books.remove(book);
+    public void deleteBook(Integer id) {
+        bookRepository.deleteById(id);
     }
 
-    public void updateBook(Book book) {
-        Book bookToUpdate = getBooksByName(book.getTitle());
-        bookToUpdate.setAuthors(book.getAuthors());
-        bookToUpdate.setSections(book.getSections());
+    public void updateBook(Long bookId, Book updatedBookData) {
+        if (bookRepository.existsById((Math.toIntExact(bookId))))
+        {
+            updatedBookData.setId(bookId);
+            bookRepository.save(updatedBookData);
+
+        }
     }
 
-    public void updatedBook(Book book) {
-    }
-
-    public Book getBookByName(String bookName) {
-        return null;
-    }
 }

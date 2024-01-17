@@ -2,12 +2,30 @@ package uvt.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import jakarta.persistence.*;
+import lombok.Data;
 
-public class Section extends Element{
+@JsonTypeName("section")
+@Data
+@Entity
+public class Section extends BaseElement implements Element{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column
     private String title;
+    @OneToMany(targetEntity = BaseElement.class, fetch = FetchType.EAGER)
     private List<Element> children = new ArrayList<>();
+
+    public Section(){}
     public Section(String title){
         this.title = title;
+    }
+    public Long getId(){
+        return id;
     }
 
     @Override

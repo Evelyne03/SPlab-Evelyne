@@ -2,66 +2,45 @@ package uvt.models;
 
 import java.awt.*;
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+import java.util.Objects;
 
-public class ImageProxy extends Element implements Picture{
-    String url;
-    Dimension dim;
-    Image realImage;
-    public ImageProxy() {
+@Entity
+@NoArgsConstructor()
+public class ImageProxy extends BaseElement implements Element, Visitee{
+    private String imagename;
+    @Transient
+    private Image realImage= null;
+    public ImageProxy(String imagename) {
+        this.imagename = imagename;
     }
-
-    public ImageProxy(String url, Dimension dim, uvt.models.Image realImage){
-        this.url = url;
-        this.dim = dim;
-        this.realImage = realImage;
-    }
-
-    public ImageProxy(String url){
-        this.url = url;
-        dim = null;
-        realImage = null;
-    }
-
-    @Override
-    public String url(){
-        return url;
-    }
-
-    @Override
-    public Dimension dim(){
-        return dim;
-    }
-
-    @Override
-    public String content(){
-        return null;
-    }
-
-    public Image loadImage(){
-        if(realImage == null){
-            realImage = new Image(url);
+    public Image loadRealImage() {
+        if (Objects.isNull(realImage)) {
+            realImage = new Image(this.imagename);
+            return realImage;
         }
         return realImage;
     }
 
     @Override
     public void print(){
-        loadImage().print();
+        loadRealImage().print();
+        realImage.print();
     }
 
     @Override
     public void add (Element e){
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void removeElement(Element e){
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Element get(int i){
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
