@@ -4,6 +4,7 @@ import uvt.models.Book;
 import uvt.services.BooksService;
 import jakarta.persistence.Column;
 import org.springframework.stereotype.Component;
+import org.springframework.scheduling.annotation.Async;
 import uvt.models.Author;
 import java.util.concurrent.CompletableFuture;
 
@@ -22,6 +23,7 @@ public class CreateBookCommand implements Command<CompletableFuture<Book>>{
     }
 
     @Override
+    @Async
     public CompletableFuture<Book> execute() {
         return booksService.addBook(book);
     }

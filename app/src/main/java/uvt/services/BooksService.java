@@ -8,11 +8,14 @@ import uvt.repos.SectionsRepository;
 import uvt.repos.AuthorsRepository;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@EnableAsync(proxyTargetClass = true)
 public class BooksService {
     private List<Book> books = new ArrayList<>();
     private final BooksRepository bookRepository;
@@ -36,6 +39,7 @@ public class BooksService {
                 .orElse(null);
     }
 
+    @Async
     public CompletableFuture<Book> addBook(Book book) {
         Book createdBook = bookRepository.save(book);
         return CompletableFuture.completedFuture(createdBook);

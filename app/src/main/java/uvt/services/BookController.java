@@ -24,10 +24,10 @@ public class BookController {
     private final BooksRepository booksRepository;
     private final SectionsRepository sectionsRepository;
     private final AuthorsRepository authorsRepository;
-    private final BooksService booksService;
+    private final AllBooksSubject allBooksSubject;
 
     @Autowired
-    public BookController(BooksService booksService, CreateBookCommand addBook, DeleteBookCommand deleteBook, UpdateBooksCommand updatedBook, GetAllBooksCommand getAllBooks, GetBooksByNameCommand getBooksByName, BooksRepository booksRepository, SectionsRepository sectionsRepository, AuthorsRepository authorsRepository) {
+    public BookController(CreateBookCommand addBook, DeleteBookCommand deleteBook, UpdateBooksCommand updatedBook, GetAllBooksCommand getAllBooks, GetBooksByNameCommand getBooksByName, BooksRepository booksRepository, SectionsRepository sectionsRepository, AuthorsRepository authorsRepository, AllBooksSubject allBooksSubject) {
         this.addBook = addBook;
         this.deleteBook = deleteBook;
         this.updatedBook = updatedBook;
@@ -36,7 +36,7 @@ public class BookController {
         this.booksRepository = booksRepository;
         this.sectionsRepository = sectionsRepository;
         this.authorsRepository = authorsRepository;
-        this.booksService = booksService;
+        this.allBooksSubject = allBooksSubject;
     }
 
     @GetMapping("/all")
@@ -54,6 +54,7 @@ public class BookController {
             sectionsRepository.save((Section) e);
         }
         addBook.setBook(book);
+        allBooksSubject.add(book);
         return addBook.execute();
     }
 
